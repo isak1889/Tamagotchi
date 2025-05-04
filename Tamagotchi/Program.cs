@@ -33,7 +33,7 @@ while (myTama.GetAlive() == true)
 
     if (doWhat == "3")
     {
-        myTama.feed();
+        myTama.feed(1);
     }
 
     else 

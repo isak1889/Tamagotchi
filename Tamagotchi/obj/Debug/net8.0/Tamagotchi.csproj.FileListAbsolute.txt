@@ -12,3 +12,4 @@ c:\Users\isak.eriksson4\proggramering\Tamagotchi\Tamagotchi\obj\Debug\net8.0\ref
 c:\Users\isak.eriksson4\proggramering\Tamagotchi\Tamagotchi\obj\Debug\net8.0\Tamagotchi.pdb
 c:\Users\isak.eriksson4\proggramering\Tamagotchi\Tamagotchi\obj\Debug\net8.0\Tamagotchi.genruntimeconfig.cache
 c:\Users\isak.eriksson4\proggramering\Tamagotchi\Tamagotchi\obj\Debug\net8.0\ref\Tamagotchi.dll
+C:\Users\isak.eriksson4\proggramering\Tamagotchi\Tamagotchi\obj\Debug\net8.0\Tamagotchi.sourcelink.json

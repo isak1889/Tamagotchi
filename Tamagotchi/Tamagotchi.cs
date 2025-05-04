@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 
 public class Tamagotchi
 {
-    private int hunger;
+    protected int hunger;
 
-    private int boredom;
+    protected int boredom;
 
     private List<string> words = new List<string>() {"Hello"};
 
-    private bool isAlive;
+    protected bool isAlive;
 
     public string name;
 
@@ -19,15 +20,16 @@ public class Tamagotchi
         isAlive = true;
     }
 
-    public void feed()
+    public void feed(int calories)
     {
         Console.WriteLine ($"[{name}] äter och blir mindre hungrig");
-        hunger -= 2;
+        //hunger -= Random.Shared.Next(0,3);
+        hunger -= Math.Max(calories,0);
 
-        if (hunger < 0)
-        {
-            hunger = 0;
-        }
+        //if (hunger < 0)
+       // {
+        //    hunger = 0;
+        //}
     }
 
     public void Hi()
@@ -43,20 +45,20 @@ public class Tamagotchi
         words.Add(word);
     }
 
-    public void tick()
-    {
-        hunger ++;
-        boredom ++;
+    // public void tick()
+    // {
+    //     hunger ++;
+    //     boredom ++;
 
-        if (hunger > 10 || boredom > 10)
-        {
-            isAlive = false;
-        }
-    }
+    //     if (hunger > 10 || boredom > 10)
+    //     {
+    //         isAlive = false;
+    //     }
+    // }
 
     public void PrintStats()
     {
-        Console.WriteLine($"Namn: {name} | Hunger: {hunger} | Boredom: {boredom} Ordförråd: {words.Count} ord " );
+        Console.WriteLine($"Namn: {name} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord " );
     }
 
     public bool GetAlive()
