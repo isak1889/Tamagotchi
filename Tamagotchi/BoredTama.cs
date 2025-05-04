@@ -2,7 +2,11 @@ using System;
 
 public class BoredTama: Tamagotchi
 {
-    public void tick()
+    public BoredTama()
+    {
+        type="Bored Tamagotchi";
+    }
+    public override void tick()
     {
         hunger ++;
         boredom += Random.Shared.Next(1,4);

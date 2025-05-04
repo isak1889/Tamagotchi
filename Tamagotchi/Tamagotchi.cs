@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
-public class Tamagotchi
+public abstract class Tamagotchi
 {
     protected int hunger;
 
@@ -13,6 +13,8 @@ public class Tamagotchi
 
     protected bool isAlive;
 
+    public string type;
+    public abstract void tick();
     public string name;
 
       public Tamagotchi()
@@ -26,10 +28,10 @@ public class Tamagotchi
         //hunger -= Random.Shared.Next(0,3);
         hunger -= Math.Max(calories,0);
 
-        //if (hunger < 0)
-       // {
-        //    hunger = 0;
-        //}
+        if (hunger < 0)
+        {
+            hunger = 0;
+        }
     }
 
     public void Hi()
@@ -58,7 +60,7 @@ public class Tamagotchi
 
     public void PrintStats()
     {
-        Console.WriteLine($"Namn: {name} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord " );
+        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord " );
     }
 
     public bool GetAlive()
@@ -73,7 +75,7 @@ public class Tamagotchi
         Console.WriteLine($"[{name}] är nu mindre uttråkad");
         boredom -= 2;
 
-        if (boredom > 0)
+        if (boredom < 0)
         {
             boredom = 0;
         }

@@ -1,7 +1,27 @@
 ﻿Console.WriteLine("Välkommen till tamagotchi");
+Tamagotchi myTama;
 
-Tamagotchi myTama = new Tamagotchi();
+Tamagotchi getTamagochi()
+{
 
+
+    int tamatype = Random.Shared.Next(0,3);
+    if (tamatype == 1)
+    {
+        return new BoredTama();
+    }
+    else
+    {
+        return new HungryTama();
+    }
+     
+}
+// Tamagotchi myTama = new Tamagotchi();
+
+
+
+myTama = getTamagochi();
+Console.WriteLine($"Din tamagotchi typ är {myTama.type}");
 Console.WriteLine("Välj ett namn för din tamagotchi");
 myTama.name = Console.ReadLine();
 
@@ -26,14 +46,26 @@ while (myTama.GetAlive() == true)
         myTama.teach(word);
     }
 
-    if (doWhat == "2")
+    else if (doWhat == "2")
     {
         myTama.Hi();
     }
 
-    if (doWhat == "3")
+    else if (doWhat == "3")
     {
-        myTama.feed(1);
+        // int calories = int.Parse(Console.ReadLine());
+        
+        // string calories = Console.ReadLine();
+        int result;
+        bool success = false;
+        int calories = -1;
+        while(!success)
+        {
+
+            success = int.TryParse(Console.ReadLine(), out calories);
+
+        }
+        myTama.feed(calories);
     }
 
     else 
