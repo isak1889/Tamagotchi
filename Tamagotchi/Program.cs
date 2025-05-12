@@ -57,7 +57,7 @@ while (myTama.GetAlive() == true)
         // string calories = Console.ReadLine();
         
         Console.WriteLine("Hur många kalorier?");
-        int result;
+        //int result;
         bool success = false;
         int calories = -1;
         while(!success)

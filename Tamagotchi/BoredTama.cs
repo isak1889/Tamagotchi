@@ -12,6 +12,7 @@ public class BoredTama: Tamagotchi
         hunger ++;
         //boredom ökar med ett slumpmässigt tal mellan 1 och 4
         boredom += Random.Shared.Next(1,4);
+        playerCalories += caloriesPerRound;
 
         if (hunger > 10 || boredom > 10)
         {

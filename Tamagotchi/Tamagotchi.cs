@@ -13,7 +13,10 @@ public abstract class Tamagotchi
 
     private List<int> calorieslist = new List<int>();
    
-    
+        
+    public int playerCalories = 10;
+
+    public int caloriesPerRound = 2; 
 
     protected bool isAlive;
 
@@ -28,15 +31,25 @@ public abstract class Tamagotchi
 
     public void feed(int calories)
     {
+        if (calories > playerCalories)
+        {
+        Console.WriteLine($"Du har inte tillräckligt med kalorier! Du har bara {playerCalories} kvar.");
+
+        return;
+        }
+
         Console.WriteLine ($"[{name}] äter och blir mindre hungrig");
-        hunger -= Random.Shared.Next(0,3);
-        // hunger -= Math.Max(calories,0);
+        //hunger -= Random.Shared.Next(0,3);
+        hunger -= Math.Max(calories,0);
         calorieslist.Add(calories);
+        playerCalories -= calories;
 
         if (hunger < 0)
         {
             hunger = 0;
         }
+
+         Console.WriteLine($"Du har {playerCalories} kalorier kvar att mata med.");
     }
 
     public void Hi()
@@ -50,6 +63,7 @@ public abstract class Tamagotchi
     {
         Console.WriteLine ($"[{name}] lär sig: {word}");
         words.Add(word);
+        ReduceBoredom();
     }
 
     // public void tick()
@@ -66,7 +80,7 @@ public abstract class Tamagotchi
     public void PrintStats()
     {
         int totalCalories = calorieslist.Sum(); 
-        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord | Kalorier: {totalCalories}" );
+        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord | Kalorier: {totalCalories} | Kalorier kvar: {playerCalories}"  );
     }
 
     public bool GetAlive()
