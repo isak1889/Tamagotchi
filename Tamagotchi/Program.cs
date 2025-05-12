@@ -4,7 +4,7 @@ Tamagotchi myTama;
 Tamagotchi getTamagochi()
 {
 
-
+    //slumpar vilken typ av tamagotchi som skapas
     int tamatype = Random.Shared.Next(0,3);
     if (tamatype == 1)
     {
@@ -16,10 +16,10 @@ Tamagotchi getTamagochi()
     }
      
 }
-// Tamagotchi myTama = new Tamagotchi();
 
 
 
+//skapar en tamagotchi
 myTama = getTamagochi();
 Console.WriteLine($"Din tamagotchi typ är {myTama.type}");
 Console.WriteLine("Välj ett namn för din tamagotchi");
@@ -56,12 +56,13 @@ while (myTama.GetAlive() == true)
         // int calories = int.Parse(Console.ReadLine());
         
         // string calories = Console.ReadLine();
+        Console.WriteLine("Hur många kalorier?");
         int result;
         bool success = false;
         int calories = -1;
         while(!success)
         {
-
+            //konverterar string från användaren till en int
             success = int.TryParse(Console.ReadLine(), out calories);
 
         }
@@ -73,6 +74,7 @@ while (myTama.GetAlive() == true)
         Console.WriteLine("Gör ingenting...");
     }
 
+    //tick körs varje gång
     myTama.tick();
     Console.WriteLine ("Klicka för att för att fortsätta");
     Console.ReadLine ();

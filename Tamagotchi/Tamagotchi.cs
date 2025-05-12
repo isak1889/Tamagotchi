@@ -11,6 +11,8 @@ public abstract class Tamagotchi
 
     private List<string> words = new List<string>() {"Hello"};
 
+    private List<int> calorieslist = new List<int>();
+
     protected bool isAlive;
 
     public string type;
@@ -25,8 +27,9 @@ public abstract class Tamagotchi
     public void feed(int calories)
     {
         Console.WriteLine ($"[{name}] äter och blir mindre hungrig");
-        //hunger -= Random.Shared.Next(0,3);
-        hunger -= Math.Max(calories,0);
+        hunger -= Random.Shared.Next(0,3);
+        // hunger -= Math.Max(calories,0);
+        calorieslist.Add(calories);
 
         if (hunger < 0)
         {
@@ -60,7 +63,7 @@ public abstract class Tamagotchi
 
     public void PrintStats()
     {
-        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord " );
+        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord | Har matats: {calorieslist.Count} gånger" );
     }
 
     public bool GetAlive()
