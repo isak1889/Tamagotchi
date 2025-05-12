@@ -12,6 +12,8 @@ public abstract class Tamagotchi
     private List<string> words = new List<string>() {"Hello"};
 
     private List<int> calorieslist = new List<int>();
+   
+    
 
     protected bool isAlive;
 
@@ -63,7 +65,8 @@ public abstract class Tamagotchi
 
     public void PrintStats()
     {
-        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord | Har matats: {calorieslist.Count} gånger" );
+        int totalCalories = calorieslist.Sum(); 
+        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord | Kalorier: {totalCalories}" );
     }
 
     public bool GetAlive()

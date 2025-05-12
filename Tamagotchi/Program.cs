@@ -54,8 +54,8 @@ while (myTama.GetAlive() == true)
     else if (doWhat == "3")
     {
         // int calories = int.Parse(Console.ReadLine());
-        
         // string calories = Console.ReadLine();
+        
         Console.WriteLine("Hur många kalorier?");
         int result;
         bool success = false;
@@ -66,7 +66,10 @@ while (myTama.GetAlive() == true)
             success = int.TryParse(Console.ReadLine(), out calories);
 
         }
+        
+        
         myTama.feed(calories);
+
     }
 
     else 
