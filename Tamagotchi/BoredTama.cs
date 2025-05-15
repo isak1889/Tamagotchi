@@ -5,14 +5,14 @@ public class BoredTama: Tamagotchi
     public BoredTama()
     {
         //definerar vilken typ tamagotchin är
-        type="Bored Tamagotchi";
+        TamaType="Bored Tamagotchi";
     }
-    public override void tick()
+    public override void Tick()
     {
         hunger ++;
         //boredom ökar med ett slumpmässigt tal mellan 1 och 4
         boredom += Random.Shared.Next(1,4);
-        playerCalories += caloriesPerRound;
+        PlayerCalories += CaloriesPerRound;
 
         if (hunger > 10 || boredom > 10)
         {

@@ -21,20 +21,23 @@ Tamagotchi getTamagochi()
 
 //skapar en tamagotchi
 myTama = getTamagochi();
-Console.WriteLine($"Din tamagotchi typ är {myTama.type}");
+
+//typ av tamagotchi presenteras
+Console.WriteLine($"Din tamagotchi typ är {myTama.TamaType}");
 Console.WriteLine("Välj ett namn för din tamagotchi");
-myTama.name = Console.ReadLine();
+myTama.Name = Console.ReadLine();
 
-Console.WriteLine($"Bra, {myTama.name} är ett fantastiskt namn!");
+Console.WriteLine($"Bra, {myTama.Name} är ett fantastiskt namn!");
 
+//Körs sålänge tamagotchin lever
 while (myTama.GetAlive() == true)
 {
     Console.Clear ();
     myTama.PrintStats();
     Console.WriteLine ("Vad vill du göra?");
-    Console.WriteLine ($"1. Lära {myTama.name} ett nytt ord ");
-    Console.WriteLine ($"2. Prata med {myTama.name}");
-    Console.WriteLine ($"3. Mata {myTama.name}");
+    Console.WriteLine ($"1. Lära {myTama.Name} ett nytt ord ");
+    Console.WriteLine ($"2. Prata med {myTama.Name}");
+    Console.WriteLine ($"3. Mata {myTama.Name}");
     Console.WriteLine ($"4. Ingenting");
 
     string doWhat = Console.ReadLine ();
@@ -43,23 +46,21 @@ while (myTama.GetAlive() == true)
     {
         Console.WriteLine("Vilket ord?");
         string word = Console.ReadLine();
-        myTama.teach(word);
+        myTama.Teach(word);
     }
 
     else if (doWhat == "2")
     {
-        myTama.Hi();
+        myTama.Hi();    
     }
 
     else if (doWhat == "3")
     {
-        // int calories = int.Parse(Console.ReadLine());
-        // string calories = Console.ReadLine();
-        
+
         Console.WriteLine("Hur många kalorier?");
-        //int result;
+        
         bool success = false;
-        int calories = -1;
+        int calories = 0;
         while(!success)
         {
             //konverterar string från användaren till en int
@@ -68,7 +69,7 @@ while (myTama.GetAlive() == true)
         }
         
         
-        myTama.feed(calories);
+        myTama.Feed(calories);
 
     }
 
@@ -78,7 +79,7 @@ while (myTama.GetAlive() == true)
     }
 
     //tick körs varje gång
-    myTama.tick();
+    myTama.Tick();
     Console.WriteLine ("Klicka för att för att fortsätta");
     Console.ReadLine ();
 

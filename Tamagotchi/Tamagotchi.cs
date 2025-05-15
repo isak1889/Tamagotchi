@@ -14,73 +14,67 @@ public abstract class Tamagotchi
     private List<int> calorieslist = new List<int>();
    
         
-    public int playerCalories = 10;
+    public int PlayerCalories = 10;
 
-    public int caloriesPerRound = 2; 
+    public int CaloriesPerRound = 1; 
 
     protected bool isAlive;
 
-    public string type;
-    public abstract void tick();
-    public string name;
+    public string TamaType;
+    public abstract void Tick();
+    public string Name;
 
       public Tamagotchi()
     {
         isAlive = true;
     }
 
-    public void feed(int calories)
+    public void Feed(int calories)
     {
-        if (calories > playerCalories)
+        if (calories > PlayerCalories)
         {
-        Console.WriteLine($"Du har inte tillräckligt med kalorier! Du har bara {playerCalories} kvar.");
+        Console.WriteLine($"Du har inte tillräckligt med kalorier! Du har bara {PlayerCalories} kvar.");
 
         return;
         }
 
-        Console.WriteLine ($"[{name}] äter och blir mindre hungrig");
-        //hunger -= Random.Shared.Next(0,3);
+        Console.WriteLine ($"[{Name}] äter och blir mindre hungrig");
+        
+        //hungern med antalet kalorier endast om calories är större än noll
         hunger -= Math.Max(calories,0);
         calorieslist.Add(calories);
-        playerCalories -= calories;
 
+        //spelarens tillgängliga kalorier minskar med antalet kalorier som används
+        PlayerCalories -= calories;
+
+        //hungern kan inte bli negativ
         if (hunger < 0)
         {
             hunger = 0;
         }
 
-         Console.WriteLine($"Du har {playerCalories} kalorier kvar att mata med.");
+         Console.WriteLine($"Du har {PlayerCalories} kalorier kvar att mata med.");
     }
 
     public void Hi()
     {
         int wordNum = Random.Shared.Next (words.Count);
-        Console.WriteLine ($"[{name}] säger: {words[wordNum]}");
+        Console.WriteLine ($"[{Name}] säger: {words[wordNum]}");
         ReduceBoredom();
     }
 
-    public void teach(string word)
+    public void Teach(string word)
     {
-        Console.WriteLine ($"[{name}] lär sig: {word}");
+        Console.WriteLine ($"[{Name}] lär sig: {word}");
         words.Add(word);
         ReduceBoredom();
     }
 
-    // public void tick()
-    // {
-    //     hunger ++;
-    //     boredom ++;
-
-    //     if (hunger > 10 || boredom > 10)
-    //     {
-    //         isAlive = false;
-    //     }
-    // }
-
     public void PrintStats()
     {
+        //räknar ut totala kalorier som tamagotchin har matats med
         int totalCalories = calorieslist.Sum(); 
-        Console.WriteLine($"Namn: {name}|Typ: {type} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord | Kalorier: {totalCalories} | Kalorier kvar: {playerCalories}"  );
+        Console.WriteLine($"Namn: {Name}|Typ: {TamaType} | Hunger: {hunger} | Boredom: {boredom}  Ordförråd: {words.Count} ord | Kalorier: {totalCalories} | Kalorier kvar: {PlayerCalories}"  );
     }
 
     public bool GetAlive()
@@ -92,9 +86,10 @@ public abstract class Tamagotchi
     
     private void ReduceBoredom()
     {
-        Console.WriteLine($"[{name}] är nu mindre uttråkad");
+        Console.WriteLine($"[{Name}] är nu mindre uttråkad");
         boredom -= 2;
 
+        //Boredom kan inte bli negativ
         if (boredom < 0)
         {
             boredom = 0;
